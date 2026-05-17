@@ -25,7 +25,7 @@ def consultar():
     payload = {'data': f'{{"nro_expediente":"{expediente}","fecha_nac":"{fecha_nac}"}}'}
     
     resp = session.post(
-    'https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/ajax_consulta_tramite.php',
+   'https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/api/ajax_consulta_tramite.php',
     data=payload,
     headers=headers,
     timeout=10
