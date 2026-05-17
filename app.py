@@ -13,7 +13,7 @@ def consultar():
     session = requests.Session()
     
     # Obtener cookies de sesión
-    session.get('https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/ConsultaUnificada.php')
+    session.get('https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/ConsultaUnificada.php', timeout=10)
     
     # Consultar trámite
     headers = {
@@ -25,10 +25,11 @@ def consultar():
     payload = {'data': f'{{"nro_expediente":"{expediente}","fecha_nac":"{fecha_nac}"}}'}
     
     resp = session.post(
-        'https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/ajax_consulta_tramite.php',
-        data=payload,
-        headers=headers
-    )
+    'https://www.migraciones.gob.ar/accesible/consultaTramitePrecaria/ajax_consulta_tramite.php',
+    data=payload,
+    headers=headers,
+    timeout=10
+)
     
     try:
         return jsonify(resp.json())
