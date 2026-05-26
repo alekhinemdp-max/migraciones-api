@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/consultar', methods=['POST'])
 def consultar():
     datos = request.json
-    expediente = datos.get('expediente')
+    expediente = datos.get('nro_expediente') or datos.get('expediente')
     fecha_nac = datos.get('fecha_nac')
     
     session = requests.Session()
